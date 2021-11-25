@@ -10,8 +10,6 @@ const Game = function ({ currentLevel }) {
   const [menuCoordY, setMenuCoordY] = useState(0);
 
   function toggleMenu(e) {
-    console.log('ImageX', e.pageX);
-    console.log('ImageY', e.pageY);
     setMenuCoordX(e.pageX);
     setMenuCoordY(e.pageY);
     setShowMenu(!showMenu);
