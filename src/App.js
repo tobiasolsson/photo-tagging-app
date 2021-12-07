@@ -9,7 +9,7 @@ const App = function () {
   const [currentLevel, setCurrentLevel] = useState(0);
   return (
     <div>
-      <Nav />
+      <Nav currentLevel={currentLevel} />
       <Routes>
         <Route
           exact

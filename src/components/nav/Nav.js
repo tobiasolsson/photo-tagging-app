@@ -1,10 +1,10 @@
 import React from 'react';
 import NavItems from '../navItems/NavItems';
 
-const Nav = function () {
+const Nav = function ({ currentLevel }) {
   return (
     <header>
-      <NavItems />
+      <NavItems currentLevel={currentLevel} />
     </header>
   );
 };

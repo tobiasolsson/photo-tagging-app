@@ -1,0 +1,11 @@
+.char {
+  width: 150px;
+  height: 150px;
+  margin: auto 10px;
+}
+
+.listChars {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
