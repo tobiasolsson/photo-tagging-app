@@ -1,8 +1,8 @@
 import gamecube from './assets/images/gamecube.jpg';
 import n64 from './assets/images/n64.jpg';
-import linkN64 from './assets/images/n64/link.jpg';
-import marioN64 from './assets/images/n64/mario-star.jpg';
-import falconN64 from './assets/images/n64/captain-falcon.jpg';
+import linkN64 from './assets/images/n64/link.png';
+import marioN64 from './assets/images/n64/mario-star.png';
+import falconN64 from './assets/images/n64/captain-falcon.png';
 
 import wii from './assets/images/wii.jpg';
 

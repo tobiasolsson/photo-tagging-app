@@ -5,3 +5,8 @@
   background-color: salmon;
   position: absolute;
 }
+
+.character {
+  width: 60px;
+  height: 60px;
+}

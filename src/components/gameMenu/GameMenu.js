@@ -3,15 +3,21 @@
 import React from 'react';
 import styles from './GameMenu.module.css';
 
-const GameMenu = function ({ xCoord, yCoord }) {
+const GameMenu = function ({ xCoord, yCoord, characters }) {
   const position = { left: xCoord, top: yCoord };
+  const listChars = characters.map((char) => {
+    if (!char.found) {
+      return (
+        <li>
+          <img className={styles.character} src={char.image} alt={char.name} />
+        </li>
+      );
+    }
+    return null;
+  });
   return (
     <div className={styles.menu} style={position}>
-      <ul>
-        <li>TEST 1</li>
-        <li>TEST 2</li>
-        <li>TEST 3</li>
-      </ul>
+      <ul>{listChars}</ul>
     </div>
   );
 };

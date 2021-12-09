@@ -16,7 +16,11 @@ const Game = function ({ currentLevel }) {
   }
 
   const menu = showMenu ? (
-    <GameMenu xCoord={menuCoordX} yCoord={menuCoordY} />
+    <GameMenu
+      xCoord={menuCoordX}
+      yCoord={menuCoordY}
+      characters={currentLevel.characters}
+    />
   ) : null;
 
   return (
