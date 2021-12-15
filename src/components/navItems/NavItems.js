@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './NavItems.module.css';
 
-const NavItems = function ({ currentLevel }) {
+const NavItems = function ({ currentLevel, setCurrentLevel }) {
   function handleCharacters() {
     const characterImages = currentLevel.characters.map((character) => (
       <li>
@@ -22,11 +22,15 @@ const NavItems = function ({ currentLevel }) {
   return (
     <ul>
       <li>
-        <Link to="/leaderboard">Leaderboard</Link>
+        <Link to="/leaderboard" onClick={() => setCurrentLevel(0)}>
+          Leaderboard
+        </Link>
       </li>
       <li>{middle}</li>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/" onClick={() => setCurrentLevel(0)}>
+          Home
+        </Link>
       </li>
     </ul>
   );
