@@ -15,8 +15,10 @@ const levelData = [
         name: 'Link',
         image: linkN64,
         found: false,
-        xCoord: 0,
-        yCoord: 0,
+        xMax: 1957,
+        xMin: 435,
+        yMax: 2017,
+        yMin: 1808,
       },
       {
         name: 'Power Star',
