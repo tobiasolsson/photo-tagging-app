@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import styles from './Game.module.css';
 import GameMenu from '../gameMenu/GameMenu';
 
-const Game = function ({ currentLevel }) {
+const Game = function ({ currentLevel, toggleFound }) {
   const [showMenu, setShowMenu] = useState(false);
   const [xCoord, setXCoord] = useState(0);
   const [yCoord, setYCoord] = useState(0);
@@ -35,7 +35,6 @@ const Game = function ({ currentLevel }) {
     setShowMenu(!showMenu);
 
     console.log('X: ', xCoord, 'Y: ', yCoord);
-    console.log(currentLevel.characters[0].found);
   }
 
   function checkTarget(char) {
@@ -45,7 +44,7 @@ const Game = function ({ currentLevel }) {
       yCoord <= char.yMax &&
       yCoord >= char.yMin
     ) {
-      console.log('found');
+      toggleFound(char.name);
     }
     setShowMenu(!showMenu);
   }
