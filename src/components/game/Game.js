@@ -11,9 +11,26 @@ const Game = function ({ currentLevel }) {
   const [yCoord, setYCoord] = useState(0);
 
   function toggleMenu(e) {
-    setXCoord(e.pageX);
-    setYCoord(e.pageY);
+    const image = e.target;
+
+    // Get the size of the users (scaled) image
+    const currentWidth = image.offsetWidth;
+    const currentHeight = image.offsetHeight;
+
+    // Get the size of the original image
+    const { naturalWidth } = image;
+    const { naturalHeight } = image;
+
+    // Get relative size, so we can use any image size
+    const diffWidth = naturalWidth / currentWidth;
+    const diffHeight = naturalHeight / currentHeight;
+
+    // Find the user X,Y relative to the image original size and X,Y
+    setXCoord(Math.floor(e.pageX * diffWidth));
+    setYCoord(Math.floor((e.pageY - image.offsetTop) * diffHeight));
     setShowMenu(!showMenu);
+
+    console.log('X: ', xCoord, 'Y: ', yCoord);
     console.log(currentLevel.characters[0].found);
   }
 
