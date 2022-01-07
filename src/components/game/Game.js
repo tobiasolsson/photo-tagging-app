@@ -9,6 +9,8 @@ const Game = function ({ currentLevel }) {
   const [showMenu, setShowMenu] = useState(false);
   const [xCoord, setXCoord] = useState(0);
   const [yCoord, setYCoord] = useState(0);
+  const [xMenu, setXMenu] = useState(0);
+  const [yMenu, setYMenu] = useState(0);
 
   function toggleMenu(e) {
     const image = e.target;
@@ -21,13 +23,15 @@ const Game = function ({ currentLevel }) {
     const { naturalWidth } = image;
     const { naturalHeight } = image;
 
-    // Get relative size, so we can use any image size
+    // Get %-change, so we can use any image size
     const diffWidth = naturalWidth / currentWidth;
     const diffHeight = naturalHeight / currentHeight;
 
-    // Find the user X,Y relative to the image original size and X,Y
+    // Recalculate X, Y to original size
     setXCoord(Math.floor(e.pageX * diffWidth));
     setYCoord(Math.floor((e.pageY - image.offsetTop) * diffHeight));
+    setXMenu(e.pageX);
+    setYMenu(e.pageY);
     setShowMenu(!showMenu);
 
     console.log('X: ', xCoord, 'Y: ', yCoord);
@@ -48,8 +52,8 @@ const Game = function ({ currentLevel }) {
 
   const menu = showMenu ? (
     <GameMenu
-      xCoord={xCoord}
-      yCoord={yCoord}
+      xCoord={xMenu}
+      yCoord={yMenu}
       characters={currentLevel.characters}
       checkTarget={checkTarget}
     />
