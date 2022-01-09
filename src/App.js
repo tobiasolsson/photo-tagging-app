@@ -8,6 +8,8 @@ import Game from './components/game/Game';
 
 const App = function () {
   const [currentLevel, setCurrentLevel] = useState(0);
+  const [count, setCount] = useState(0);
+  const [victory, setVictory] = useState(false);
 
   function toggleFound(name) {
     const updatedLevel = {
@@ -19,12 +21,26 @@ const App = function () {
         return char;
       }),
     };
+
+    // Check if all is found
+    const victoryCondition = updatedLevel.characters.every(
+      (char) => char.found,
+    );
+    if (victoryCondition) {
+      setVictory(true);
+    }
     setCurrentLevel(updatedLevel);
+  }
+
+  function exitGame() {
+    setVictory(false);
+    setCurrentLevel(0);
+    setCount(0);
   }
 
   return (
     <div>
-      <Nav currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} />
+      <Nav currentLevel={currentLevel} exitGame={exitGame} count={count} />
       <Routes>
         <Route
           exact
@@ -35,7 +51,13 @@ const App = function () {
         <Route
           path="/game"
           element={
-            <Game currentLevel={currentLevel} toggleFound={toggleFound} />
+            <Game
+              currentLevel={currentLevel}
+              toggleFound={toggleFound}
+              setCount={setCount}
+              count={count}
+              victory={victory}
+            />
           }
         />
       </Routes>

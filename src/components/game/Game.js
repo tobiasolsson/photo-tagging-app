@@ -1,16 +1,42 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Game.module.css';
 import GameMenu from '../gameMenu/GameMenu';
 
-const Game = function ({ currentLevel, toggleFound }) {
+const Game = function ({
+  currentLevel,
+  toggleFound,
+  setCount,
+  count,
+  victory,
+}) {
   const [showMenu, setShowMenu] = useState(false);
   const [xCoord, setXCoord] = useState(0);
   const [yCoord, setYCoord] = useState(0);
   const [xMenu, setXMenu] = useState(0);
   const [yMenu, setYMenu] = useState(0);
+
+  useEffect(() => {
+    // save intervalId to clear the interval when the
+    // component re-renders
+    const intervalId = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+
+    // check for win, and stop timer if true
+    if (victory) {
+      // TODO: Show victory modal, let user fill in name, show time and send to backend
+      clearInterval(intervalId);
+      console.log('Win. Time: ', count);
+    }
+
+    // clear interval on re-render to avoid memory leaks
+    return () => clearInterval(intervalId);
+    // add count as a dependency to re-rerun the effect
+    // when we update it
+  }, [count, victory]);
 
   function toggleMenu(e) {
     const image = e.target;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './NavItems.module.css';
 
-const NavItems = function ({ currentLevel, setCurrentLevel }) {
+const NavItems = function ({ currentLevel, exitGame, count }) {
   function handleCharacters() {
     const characterImages = currentLevel.characters.map((character) => (
       <li>
@@ -15,20 +15,25 @@ const NavItems = function ({ currentLevel, setCurrentLevel }) {
         />
       </li>
     ));
-    return <ul className={styles.listChars}>{characterImages}</ul>;
+    return (
+      <ul className={styles.listChars}>
+        {characterImages}
+        {count}
+      </ul>
+    );
   }
 
   const middle = currentLevel ? handleCharacters() : 'GameTitle';
   return (
     <ul>
       <li>
-        <Link to="/leaderboard" onClick={() => setCurrentLevel(0)}>
+        <Link to="/leaderboard" onClick={() => exitGame()}>
           Leaderboard
         </Link>
       </li>
       <li>{middle}</li>
       <li>
-        <Link to="/" onClick={() => setCurrentLevel(0)}>
+        <Link to="/" onClick={() => exitGame()}>
           Home
         </Link>
       </li>
