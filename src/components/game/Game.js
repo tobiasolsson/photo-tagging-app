@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Game.module.css';
 import GameMenu from '../gameMenu/GameMenu';
+import Modal from '../modal/Modal';
+import SubmitForm from '../submitForm/SubmitForm';
 
 const Game = function ({
   currentLevel,
@@ -11,6 +13,7 @@ const Game = function ({
   setCount,
   count,
   victory,
+  exitGame,
 }) {
   const [showMenu, setShowMenu] = useState(false);
   const [xCoord, setXCoord] = useState(0);
@@ -93,6 +96,9 @@ const Game = function ({
         onClick={toggleMenu}
       />
       {menu}
+      <Modal show={victory}>
+        <SubmitForm count={count} exitGame={exitGame} />
+      </Modal>
     </div>
   );
 };

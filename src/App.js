@@ -57,6 +57,7 @@ const App = function () {
               setCount={setCount}
               count={count}
               victory={victory}
+              exitGame={exitGame}
             />
           }
         />

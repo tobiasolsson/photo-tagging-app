@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  height: 40%;
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px dashed red;
+  box-sizing: border-box;
+  background-color: salmon;
+}
+
+.showModal {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hideModal {
+  opacity: 0;
+  transform: translateX(100vh);
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+}
