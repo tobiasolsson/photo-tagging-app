@@ -6,15 +6,18 @@ import styles from './NavItems.module.css';
 
 const NavItems = function ({ currentLevel, exitGame, count }) {
   function handleCharacters() {
-    const characterImages = currentLevel.characters.map((character) => (
-      <li>
-        <img
-          className={styles.char}
-          src={character.image}
-          alt={character.name}
-        />
-      </li>
-    ));
+    const characterImages = currentLevel.characters.map((character) => {
+      const foundStyle = character.found ? styles.found : null;
+      return (
+        <li>
+          <img
+            className={`${styles.char} ${foundStyle}`}
+            src={character.image}
+            alt={character.name}
+          />
+        </li>
+      );
+    });
     return (
       <ul className={styles.listChars}>
         {characterImages}
