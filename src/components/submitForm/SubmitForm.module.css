@@ -1,0 +1,17 @@
+.form {
+  display: grid;
+  text-align: center;
+}
+
+.input,
+.button {
+  justify-self: center;
+  width: 80%;
+}
+
+.button {
+  margin: 10px;
+  padding: 4px;
+  width: 200px;
+  box-sizing: border-box;
+}

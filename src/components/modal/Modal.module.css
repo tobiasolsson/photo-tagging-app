@@ -7,9 +7,12 @@
   justify-content: center;
   align-items: center;
 
-  border: 2px dashed red;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 54px 55px,
+    rgba(0, 0, 0, 0.42) 0px -12px 30px, rgba(0, 0, 0, 0.32) 0px 4px 6px,
+    rgba(0, 0, 0, 0.37) 0px 12px 13px, rgba(0, 0, 0, 0.39) 0px -3px 5px;
+  border-radius: 12px;
   box-sizing: border-box;
-  background-color: salmon;
+  background-color: rgb(184, 93, 93);
 }
 
 .showModal {
