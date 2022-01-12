@@ -28,19 +28,21 @@ const NavItems = function ({ currentLevel, exitGame, count }) {
 
   const middle = currentLevel ? handleCharacters() : 'GameTitle';
   return (
-    <ul>
-      <li>
-        <Link to="/leaderboard" onClick={() => exitGame()}>
-          Leaderboard
-        </Link>
-      </li>
-      <li>{middle}</li>
-      <li>
-        <Link to="/" onClick={() => exitGame()}>
-          Home
-        </Link>
-      </li>
-    </ul>
+    <nav>
+      <ul className={styles.menu}>
+        <li>
+          <Link to="/leaderboard" onClick={() => exitGame()}>
+            Leaderboard
+          </Link>
+        </li>
+        <li>{middle}</li>
+        <li>
+          <Link to="/" onClick={() => exitGame()}>
+            Home
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

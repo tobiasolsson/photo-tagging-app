@@ -1,6 +1,6 @@
 .char {
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   margin: auto 10px;
 }
 
@@ -12,4 +12,13 @@
 
 .found {
   opacity: 0.3;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 50px;
 }

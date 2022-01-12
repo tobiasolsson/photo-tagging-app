@@ -40,7 +40,7 @@ const App = function () {
 
   return (
     <div>
-      <Nav currentLevel={currentLevel} exitGame={exitGame} count={count} />
+      <Nav currentLevel={currentLevel} exitGame={exitGame} />
       <Routes>
         <Route
           exact
