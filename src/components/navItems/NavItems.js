@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './NavItems.module.css';
 
 const NavItems = function ({ currentLevel, exitGame, count }) {
+  const location = useLocation();
+
   function handleCharacters() {
     const characterImages = currentLevel.characters.map((character) => {
       const foundStyle = character.found ? styles.found : null;
@@ -27,6 +29,21 @@ const NavItems = function ({ currentLevel, exitGame, count }) {
   }
 
   const middle = currentLevel ? handleCharacters() : 'GameTitle';
+
+  const home = (
+    <Link to="/" onClick={() => exitGame()}>
+      Home
+    </Link>
+  );
+
+  const about = (
+    <Link to="/about" onClick={() => exitGame()}>
+      About
+    </Link>
+  );
+
+  const right = location.pathname === '/' ? about : home;
+
   return (
     <nav>
       <ul className={styles.menu}>
@@ -36,11 +53,7 @@ const NavItems = function ({ currentLevel, exitGame, count }) {
           </Link>
         </li>
         <li>{middle}</li>
-        <li>
-          <Link to="/" onClick={() => exitGame()}>
-            Home
-          </Link>
-        </li>
+        <li>{right}</li>
       </ul>
     </nav>
   );

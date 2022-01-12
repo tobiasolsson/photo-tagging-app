@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Nav from './components/nav/Nav';
 import Home from './components/home/Home';
 import Leaderboard from './components/leaderboard/Leaderboard';
+import About from './components/about/About';
 import Game from './components/game/Game';
 
 const App = function () {
@@ -48,6 +49,7 @@ const App = function () {
           element={<Home setCurrentLevel={setCurrentLevel} />}
         />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/game"
           element={
