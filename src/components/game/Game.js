@@ -97,7 +97,11 @@ const Game = function ({
       />
       {menu}
       <Modal show={victory}>
-        <SubmitForm count={count} exitGame={exitGame} />
+        <SubmitForm
+          count={count}
+          exitGame={exitGame}
+          currentLevel={currentLevel}
+        />
       </Modal>
     </div>
   );

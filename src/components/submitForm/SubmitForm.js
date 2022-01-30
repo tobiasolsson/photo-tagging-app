@@ -4,7 +4,7 @@ import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import styles from './SubmitForm.module.css';
 import { db } from '../../firebase';
 
-const SubmitForm = function ({ count, exitGame }) {
+const SubmitForm = function ({ count, exitGame, currentLevel }) {
   const [name, setName] = useState('');
 
   const navigate = useNavigate();
@@ -27,13 +27,12 @@ const SubmitForm = function ({ count, exitGame }) {
       await addDoc(collection(db, 'leaderboard'), {
         name,
         count,
+        level: currentLevel.name,
         created: Timestamp.now(),
       });
-      console.log('Done?');
     } catch (err) {
       console.log(err);
     }
-    console.log('bye');
 
     // reset the state
     exitGame();
