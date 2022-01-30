@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import styles from './SubmitForm.module.css';
+import { db } from '../../firebase';
 
 const SubmitForm = function ({ count, exitGame }) {
+  const [name, setName] = useState('');
+
   const navigate = useNavigate();
 
   function convertSeconds(s) {
@@ -15,23 +19,39 @@ const SubmitForm = function ({ count, exitGame }) {
     return `${totalMin}:${totalSec}`;
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Submit name and time and level name to Firebase
     // TODO
+    try {
+      await addDoc(collection(db, 'leaderboard'), {
+        name,
+        count,
+        created: Timestamp.now(),
+      });
+      console.log('Done?');
+    } catch (err) {
+      console.log(err);
+    }
+    console.log('bye');
 
     // reset the state
     exitGame();
 
     // Redirect to root '/'
     navigate('/');
-  }
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <p>You managed to find all the characters in {convertSeconds(count)}!</p>
       <p>Enter your name to join the leaderboard:</p>
-      <input className={styles.input} type="text" />
+      <input
+        className={styles.input}
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
       <button className={styles.button} type="submit">
         Submit
       </button>
