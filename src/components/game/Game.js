@@ -2,10 +2,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import styles from './Game.module.css';
 import GameMenu from '../gameMenu/GameMenu';
 import Modal from '../modal/Modal';
 import SubmitForm from '../submitForm/SubmitForm';
+import { db } from '../../firebase';
 
 const Game = function ({
   currentLevel,
@@ -32,7 +34,6 @@ const Game = function ({
     if (victory) {
       // TODO: Show victory modal, let user fill in name, show time and send to backend
       clearInterval(intervalId);
-      console.log('Win. Time: ', count);
     }
 
     // clear interval on re-render to avoid memory leaks
@@ -62,16 +63,30 @@ const Game = function ({
     setXMenu(e.pageX);
     setYMenu(e.pageY);
     setShowMenu(!showMenu);
-
-    console.log('X: ', xCoord, 'Y: ', yCoord);
   }
 
-  function checkTarget(char) {
+  async function getFirebaseCoords(char) {
+    const levelName = currentLevel.name;
+    const q = query(
+      collection(db, levelName),
+      where('__name__', '==', char.name),
+    );
+    const querySnapshot = await getDocs(q);
+    const firebaseCoords = querySnapshot.docs.map((doc) =>
+      // doc.data() is never undefined for query doc snapshots
+      doc.data(),
+    );
+    return firebaseCoords[0];
+  }
+
+  async function checkTarget(char) {
+    const coords = await getFirebaseCoords(char);
+
     if (
-      xCoord <= char.xMax &&
-      xCoord >= char.xMin &&
-      yCoord <= char.yMax &&
-      yCoord >= char.yMin
+      xCoord <= coords.xMax &&
+      xCoord >= coords.xMin &&
+      yCoord <= coords.yMax &&
+      yCoord >= coords.yMin
     ) {
       toggleFound(char.name);
     }
