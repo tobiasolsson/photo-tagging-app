@@ -32,7 +32,6 @@ const Game = function ({
 
     // check for win, and stop timer if true
     if (victory) {
-      // TODO: Show victory modal, let user fill in name, show time and send to backend
       clearInterval(intervalId);
     }
 
