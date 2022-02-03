@@ -61,6 +61,7 @@ const Game = function ({
     setYCoord(Math.floor((e.pageY - image.offsetTop) * diffHeight));
     setXMenu(e.pageX);
     setYMenu(e.pageY);
+
     setShowMenu(!showMenu);
   }
 
