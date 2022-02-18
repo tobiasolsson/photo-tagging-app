@@ -22,7 +22,6 @@ const SubmitForm = function ({ count, exitGame, currentLevel }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Submit name and time and level name to Firebase
-    // TODO
     try {
       await addDoc(collection(db, 'leaderboard'), {
         name,
