@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/photo-tagging-app/static/css/main.dfb8d531.css",
+    "main.js": "/photo-tagging-app/static/js/main.28317f12.js",
+    "static/media/link.png": "/photo-tagging-app/static/media/link.3f170fa2fc5696ba2fc4.png",
+    "static/media/samus.png": "/photo-tagging-app/static/media/samus.3494151b31499ae18664.png",
+    "static/media/n64.jpg": "/photo-tagging-app/static/media/n64.545491ac0b26009607ba.jpg",
+    "static/media/gamecube.jpg": "/photo-tagging-app/static/media/gamecube.695e4fb35d30028458c7.jpg",
+    "static/media/wii.jpg": "/photo-tagging-app/static/media/wii.a2a678dfb6dec0f2e479.jpg",
+    "static/media/midna.png": "/photo-tagging-app/static/media/midna.3fd60e32a7b43585bbd3.png",
+    "static/media/waluigi.png": "/photo-tagging-app/static/media/waluigi.0b8e0af31f4334d5f08d.png",
+    "static/media/captain-falcon.png": "/photo-tagging-app/static/media/captain-falcon.fdd354d0c7d03949da75.png",
+    "static/media/peach.webp": "/photo-tagging-app/static/media/peach.810bd45cd52c64bbba3e.webp",
+    "static/media/kirby.png": "/photo-tagging-app/static/media/kirby.6ed4f8f560e1960e33a3.png",
+    "static/media/toad.png": "/photo-tagging-app/static/media/toad.4e4fd37dbc5896a5057e.png",
+    "index.html": "/photo-tagging-app/index.html",
+    "main.dfb8d531.css.map": "/photo-tagging-app/static/css/main.dfb8d531.css.map",
+    "main.28317f12.js.map": "/photo-tagging-app/static/js/main.28317f12.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dfb8d531.css",
+    "static/js/main.28317f12.js"
+  ]
+}
